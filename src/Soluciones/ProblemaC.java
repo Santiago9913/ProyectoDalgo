@@ -139,7 +139,7 @@ public class ProblemaC {
 	public static void main(String[] args) {
 
 		Scanner sc=new Scanner(System.in);
-		System.out.println("Ingresar datos");
+		System.out.println("Entrada");
 		boolean h=false;
 		ArrayList<int[]> datos=new ArrayList<int[]>();
 		while(!h) {
@@ -161,7 +161,7 @@ public class ProblemaC {
 		}
 		else {
 			System.out.println();
-			System.out.println("Respuesta:");
+			System.out.println("Salida");
 			int i=0;
 			while(i<datos.size()-1) {
 				solucionC(datos.get(i), datos.get(i+1));
