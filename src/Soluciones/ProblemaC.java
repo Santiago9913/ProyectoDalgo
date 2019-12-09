@@ -32,7 +32,15 @@ public class ProblemaC {
 				return;
 			}
 			if(!borde) {
-				if((x1<xp && x2<xp)||(y1<yp && y2<yp)||(yp<y1 && yp<y2)) {//Es imposible que interseque. Se avanza en 1 (punto)
+				if((xp==x1 && yp==y1)||(xp==x2 && yp==y2) ) {
+					borde=true;
+					x1=figura[(i+4)%n];
+					y1=figura[(i+5)%n];
+					x2=figura[(i+6)%n];
+					y2=figura[(i+7)%n];
+					i+=2;//Porque se avanza el doble
+				}
+				else if((x1<xp && x2<xp)||(y1<yp && y2<yp)||(yp<y1 && yp<y2)||(x1>x2&&xp==x1&&yp!=y1)||(x1<x2&&xp==x2&&yp!=y2)) {//Es imposible que interseque. Se avanza en 1 (punto)
 					x1=figura[(i+2)%n];//Actual punto x2
 					y1=figura[(i+3)%n];//Actual putno y2
 					x2=figura[(i+4)%n];
@@ -68,13 +76,17 @@ public class ProblemaC {
 								i+=2;
 								empezoHorizontal=true;
 							}
-							else 
+							else { 
 								borde=true;
-							
-						}
-						else if(pDif<0 || (a>0 && b<0) ||(a<0&&b>0)) {
-							if(y2==yp) {//Esquina o linea horizontal
+								x1=figura[(i+4)%n];
+								y1=figura[(i+5)%n];
+								x2=figura[(i+6)%n];
+								y2=figura[(i+7)%n];
+							}
 
+						}
+						else if(pDif<0 || (a>0 && b<0) ||(a<0&&b>0)||b==0) {
+							if(y2==yp) {//Esquina o linea horizontal
 								if(y2==figura[(i+5)%n]) { //Linea horizontal. Se avanza en 3
 									if((y1>y2 && figura[(i+7)%n]<y2)||(y1<y2 && figura[(i+7)%n]>y2)) {
 										c++;
@@ -102,21 +114,39 @@ public class ProblemaC {
 								}
 							}
 							else {
-								c++;//Interseca la recta
-								x1=figura[(i+2)%n];//Actual punto x2
-								y1=figura[(i+3)%n];//Actual putno y2
-								x2=figura[(i+4)%n];
-								y2=figura[(i+5)%n];
+								if(i==0) {//Empieza por esquina
+									if((y1>y2 && y1<figura[n-1])||(y1<y2 && y1>figura[n-1])) {//abre horizontalmente
+										c++;//Interseca la recta
+										x1=figura[(i+2)%n];//Actual punto x2
+										y1=figura[(i+3)%n];//Actual putno y2
+										x2=figura[(i+4)%n];
+										y2=figura[(i+5)%n];
+									}
+									else {
+										x1=figura[(i+2)%n];//Actual punto x2
+										y1=figura[(i+3)%n];//Actual putno y2
+										x2=figura[(i+4)%n];
+										y2=figura[(i+5)%n];
+									}
+								}
+								else {
+									c++;//Interseca la recta
+									x1=figura[(i+2)%n];//Actual punto x2
+									y1=figura[(i+3)%n];//Actual putno y2
+									x2=figura[(i+4)%n];
+									y2=figura[(i+5)%n];
+								}
 							}
 						}
 					}
 				}
 			}
-			else {
-				x1=figura[(i+2)%n];//Actual punto x2
-				y1=figura[(i+3)%n];//Actual putno y2
-				x2=figura[(i+4)%n];
-				y2=figura[(i+5)%n];
+			else {//Avanzan el doble porque solo tiene que verificar que esten en el dominio
+				x1=figura[(i+4)%n];
+				y1=figura[(i+5)%n];
+				x2=figura[(i+6)%n];
+				y2=figura[(i+7)%n];
+				i+=2;
 			}
 		}
 		if(empezoHorizontal) {//Ya se tuvo que haber contado el caso pero se volvio a contar al final del ciclo
