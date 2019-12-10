@@ -121,6 +121,7 @@ public class ProblemaC {
 										y1=figura[(i+3)%n];//Actual putno y2
 										x2=figura[(i+4)%n];
 										y2=figura[(i+5)%n];
+										empezoHorizontal=true;
 									}
 									else {
 										x1=figura[(i+2)%n];//Actual punto x2

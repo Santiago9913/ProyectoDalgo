@@ -48,7 +48,7 @@ public class ProblemaB {
 			}
 			else {
 				if(valores.length-j==1) {//Solo hay un valor no nulo en el arreglo 
-					if(valores[i].x<solucion[j].x) {//El valor de entrada es menor
+					if(valores[i].b<solucion[j].b) {//El valor de entrada es menor
 						solucion[j]=valores[i];
 					}
 				}
@@ -145,15 +145,15 @@ public class ProblemaB {
 			merge(arr, l, m, r); 
 		} 
 	} 
-	private static Tupla tupla1=new Tupla("1 601 65");
-	private static Tupla tupla2=new Tupla("2 600 105");
-	private static Tupla tupla3=new Tupla("3 50 100");
-	private static Tupla tupla4=new Tupla("4 100 200");
-	private static Tupla tupla5=new Tupla("5 110 150");
-	private static Tupla tupla6=new Tupla("6 600 100");
-	private static Tupla tupla7=new Tupla("7 800 70");
-	private static Tupla tupla8=new Tupla("8 600 60");
-	private static Tupla tupla9=new Tupla("9 200 95");
+	private static Tupla tupla1=new Tupla("1 1 8");
+	private static Tupla tupla2=new Tupla("2 2 9");
+	private static Tupla tupla3=new Tupla("3 3 6");
+	private static Tupla tupla4=new Tupla("4 4 7");
+	private static Tupla tupla5=new Tupla("5 5 3");
+	private static Tupla tupla6=new Tupla("6 6 2");
+	private static Tupla tupla7=new Tupla("7 7 1");
+	private static Tupla tupla8=new Tupla("8 8 5");
+	private static Tupla tupla9=new Tupla("9 9 4");
 	
 	private static Tupla tupla10=new Tupla("1 100 50");
 	private static Tupla tupla11=new Tupla("2 300 70");
@@ -165,7 +165,6 @@ public class ProblemaB {
 	private static Tupla tupla16=new Tupla("4 100 200");
 	
 	public static void main(String[] args) {
-		
 		Tupla[] entrada= {tupla1,tupla2,tupla3,tupla4,tupla5,tupla6,tupla7,tupla8,tupla9};
 		solucionB(entrada);
 		Tupla[] entrada2= {tupla10,tupla11,tupla12};
