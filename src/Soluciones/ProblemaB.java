@@ -21,7 +21,8 @@ public class ProblemaB {
 	    
 		@Override
 		public int compareTo(Tupla o) {
-			return ((Integer)a).compareTo(o.a);
+			int s=((Integer)a).compareTo(o.a);
+			return s==0?((Integer)b).compareTo(o.b):s;
 		} 
 	    
 	} 
@@ -159,6 +160,7 @@ public class ProblemaB {
 	private static Tupla tupla11=new Tupla("2 300 70");
 	private static Tupla tupla12=new Tupla("3 200 60");
 
+	
 	private static Tupla tupla13=new Tupla("1 601 65");
 	private static Tupla tupla14=new Tupla("2 600 105");
 	private static Tupla tupla15=new Tupla("3 50 100");

@@ -60,9 +60,6 @@ public class ProblemaA {
 				}
 				tamaños.add(n);
 				numeros.add(datos);
-				
-
-
 			}
 		}
 		sc.close();
