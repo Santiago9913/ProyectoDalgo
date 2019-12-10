@@ -1,9 +1,6 @@
 package Soluciones;
 
-
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.LinkedList;
 import java.util.Scanner;
 
 
@@ -32,7 +29,7 @@ public class ProblemaB {
 		@Override
 		public int compareTo(Tupla o) {
 			int s=((Integer)a).compareTo(o.a);
-			return s==0?((Integer)b).compareTo(o.b):s;
+			return s;
 		} 
 
 	} 
@@ -43,25 +40,49 @@ public class ProblemaB {
 		if(valores.length<=1) {//El arreglo esta vacio o solo tiene un dato
 			System.out.println(0);
 			System.out.println("*");
+			return;
 		}
 		//Ordenamiento del arreglo de tuplas
 		sort(valores, 0, valores.length-1);
 
-		HashMap<Integer, LinkedList<Integer>> elem = new HashMap<Integer, LinkedList<Integer>>(); 
+		int[] numero=new int[valores.length];
+		int[] ruta=new int[valores.length];
 
-		for(int i = 0; i < valores.length; i++) {
-
-			Tupla actual = valores[i]; 
-			LinkedList<Integer> list = elem.get(actual.a); 
-			if(list == null) {
-				list = new LinkedList<Integer>(); 
-				list.add(actual.b); 
-				elem.put(actual.a, list); 
-				continue; 
+		int n = valores.length; 
+		int max = -1;
+		int pMax = n;
+		for (int i = n-1; i >= 0; i--) {
+			numero[i]=1;
+			ruta[i]=n;
+			for (int j = i+1; j < n; j++) {
+				if (numero[i] <= numero[j] && valores[i].b>=valores[j].b) { 
+					numero[i]=numero[j]+1;
+					ruta[i]=j;
+				} 
+				else if(numero[i]==numero[j]+1 && valores[j].x<ruta[i]) {
+					ruta[i]=j;
+				}
 			}
-			list.add(actual.b); 
+			if(max<numero[i]) {
+				max=numero[i];
+				pMax=i;
+			}
 		}
 
+		if(max==1) {
+			System.out.println(0);
+			System.out.println("*");
+			return;
+		}
+		System.out.println(max);
+		boolean fin=false;
+		String respuesta="";
+		while(!fin) {
+			respuesta+=valores[pMax].x+" ";
+			pMax=ruta[pMax];
+			fin=pMax==n;
+		}
+		System.out.println(respuesta);
 
 	}
 
@@ -138,30 +159,7 @@ public class ProblemaB {
 			merge(arr, l, m, r); 
 		} 
 	} 
-	private static Tupla tupla1=new Tupla("1 1 8");
-	private static Tupla tupla2=new Tupla("2 2 9");
-	private static Tupla tupla3=new Tupla("3 3 6");
-	private static Tupla tupla4=new Tupla("4 4 7");
-	private static Tupla tupla5=new Tupla("5 5 3");
-	private static Tupla tupla6=new Tupla("6 6 2");
-	private static Tupla tupla7=new Tupla("7 7 1");
-	private static Tupla tupla8=new Tupla("8 8 5");
-	private static Tupla tupla9=new Tupla("9 9 4");
 
-	private static Tupla tupla10=new Tupla("1 100 50");
-	private static Tupla tupla11=new Tupla("2 300 70");
-	private static Tupla tupla12=new Tupla("3 200 60");
-
-
-	private static Tupla tupla13=new Tupla("1 601 65");
-	private static Tupla tupla14=new Tupla("2 600 105");
-	private static Tupla tupla15=new Tupla("3 50 100");
-	private static Tupla tupla16=new Tupla("4 100 200");
-	private static Tupla tupla17=new Tupla("5 110 150"); 
-	private static Tupla tupla18=new Tupla("6 600 100"); 
-	private static Tupla tupla19=new Tupla("7 800 70"); 
-	private static Tupla tupla20=new Tupla("8 600 60"); 
-	private static Tupla tupla21=new Tupla("9 200 95"); 
 
 	public static void main(String[] args) {
 
