@@ -1,5 +1,8 @@
 package Soluciones;
 
+import java.util.ArrayList;
+import java.util.Scanner;
+
 public class ProblemaA {
 
 
@@ -37,13 +40,44 @@ public class ProblemaA {
 	public static void main(String[] args) {
 
 
-		int[] arrT = {
-				0,1,2,1,4,1,2,1,0,5
-		};
+		Scanner sc=new Scanner(System.in);
+		System.out.println("Entrada");
+		boolean h=false;
+		int[] datos;
+		ArrayList<Integer> tamaños=new ArrayList<>();
+		ArrayList<int[]> numeros=new ArrayList<int[]>();
+		while(!h) {
+			int n=Integer.parseInt(sc.nextLine());
+			if(n==0) {
+				h=true;
+			}
+			else {
+				datos=new int[n];
+				String[] data=sc.nextLine().split(" ");
 
-		int N = arrT.length; 
+				for (int i = 0; i < n; i++) {
+					datos[i]=Integer.parseInt(data[i]);
+				}
+				tamaños.add(n);
+				numeros.add(datos);
+				
 
-		System.out.println(longestSubArr(arrT, N));
 
+			}
+		}
+		sc.close();
+
+		System.out.println();
+		System.out.println("Salida");
+		for(int i=0; i<tamaños.size();i++) {
+			if(numeros.get(i).length!=tamaños.get(i)) {
+				System.out.println("No esta el numero de datos solicitado");
+			}
+			else {
+				System.out.println(longestSubArr(numeros.get(i), tamaños.get(i)));
+			}
+		}
+		
+		
 	}
 }
